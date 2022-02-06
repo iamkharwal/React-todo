@@ -16,7 +16,7 @@ export const TodoInput = ({ handleData }) => {
   }, [page]);
 
   const deleteTodo = (id) => {
-    fetch(`http://localhost:3001/users/${id}`, {
+    fetch(`https://fakeserverjson.herokuapp.com/posts/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -26,7 +26,7 @@ export const TodoInput = ({ handleData }) => {
 
   const getData = () => {
     setLoading(true);
-    fetch(`http://localhost:3001/users?_page=${page}&_limit=4`)
+    fetch(`https://fakeserverjson.herokuapp.com/posts?_page=${page}&_limit=4`)
       .then((d) => d.json())
       .then((res) => {
         setTodos(res);
@@ -61,7 +61,7 @@ export const TodoInput = ({ handleData }) => {
             onClick={() => {
               const data = { title: text, body: body };
 
-              fetch("http://localhost:3001/users", {
+              fetch("https://fakeserverjson.herokuapp.com/posts", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
